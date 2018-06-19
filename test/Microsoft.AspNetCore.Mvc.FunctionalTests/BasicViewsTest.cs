@@ -35,9 +35,6 @@ namespace Microsoft.AspNetCore.Mvc.FunctionalTests
             Assert.NotNull(html);
             Assert.NotEmpty(html);
 
-            // DTD declaration confuses XDocument.
-            html = html.Replace("<!DOCTYPE html>", string.Empty);
-
             var token = AntiforgeryTestHelper.RetrieveAntiforgeryToken(html, "/");
             Assert.NotNull(token);
             Assert.NotEmpty(token);
@@ -55,9 +52,6 @@ namespace Microsoft.AspNetCore.Mvc.FunctionalTests
             Assert.NotEmpty(html);
 
             // Arrange 2
-            // DTD declaration confuses XDocument.
-            html = html.Replace("<!DOCTYPE html>", string.Empty);
-
             var token = AntiforgeryTestHelper.RetrieveAntiforgeryToken(html, "/");
             var name = Guid.NewGuid().ToString();
             name = name.Substring(startIndex: 0, length: name.LastIndexOf('-'));
